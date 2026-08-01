@@ -22,23 +22,30 @@
     background-image:radial-gradient(#00000006 1px,transparent 1px);background-size:3px 3px}
   a{color:var(--red);text-decoration:none}
   a:hover{color:var(--red2)}
-  .sans{font-family:"Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN",sans-serif}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 
-  /* ── screws ── */
+  /* ── i18n toggle ── */
+  body.lang-en .jp{display:none}
+  body.lang-jp .en{display:none}
+
   .screw{width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#d8d1bb,#9a927a);
     border:1px solid #7d7660;position:absolute}
   .screw::after{content:"";position:absolute;inset:3px;border-top:1px solid #6f6850;transform:rotate(30deg)}
 
-  /* ── red header bar (like plugin title) ── */
+  /* ── red header bar ── */
   .topbar{background:linear-gradient(180deg,#b64545 0%,var(--red) 45%,var(--red2) 100%);
     border-bottom:2px solid #6f2222;box-shadow:inset 0 1px 0 #ffffff40;position:sticky;top:0;z-index:20}
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:54px;position:relative}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:10px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
   .topbar .brand{color:#fbf6ec;font-weight:bold;letter-spacing:3px;font-size:1rem;text-shadow:0 1px 1px #00000055}
+  .topbar .right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .topbar nav{display:flex;gap:8px}
   .topbar nav a{color:#fbf6ec;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
     border:1px solid #ffffff55;border-radius:5px;padding:5px 12px;background:#ffffff14}
   .topbar nav a:hover{background:#ffffff2c;color:#fff}
+  .langtog{display:flex;gap:4px}
+  .langtog button{font-family:inherit;font-size:.66rem;letter-spacing:1px;cursor:pointer;
+    border:1px solid #ffffff66;background:#ffffff14;color:#fbf6ec;border-radius:5px;padding:5px 9px}
+  .langtog button.active{background:#fbf6ec;color:var(--red2);border-color:#fbf6ec;font-weight:bold}
 
   /* ── hero ── */
   .hero{padding:56px 0 34px}
@@ -46,7 +53,6 @@
     letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:18px}
   .hero h1{font-size:clamp(2.4rem,7vw,4.4rem);font-weight:bold;letter-spacing:1px;line-height:1;color:var(--navy)}
   .hero .tag{margin-top:16px;font-size:1.02rem;max-width:640px}
-  .hero .tag .jp{display:block;color:var(--dim);font-size:.9rem;margin-top:4px}
   .hero .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
   .chip{font-size:.66rem;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line);
     background:var(--panel);border-radius:5px;padding:5px 11px;color:var(--ink)}
@@ -58,7 +64,7 @@
   .btn:hover{filter:brightness(1.06);color:#fff}
   .btn.alt{border-color:var(--navy);background:linear-gradient(180deg,#38466a,var(--navy));color:#eef1f8}
 
-  /* ── panel (hardware card) ── */
+  /* ── panel ── */
   .panel{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;
     box-shadow:inset 0 1px 0 #ffffff70,0 1px 2px #00000012;padding:26px 26px 28px;margin:22px 0}
   .panel .s1{top:9px;left:9px}.panel .s2{top:9px;right:9px}.panel .s3{bottom:9px;left:9px}.panel .s4{bottom:9px;right:9px}
@@ -66,13 +72,11 @@
   .panel .rule{height:2px;background:var(--red);opacity:.85;margin:8px 0 18px;border-radius:2px}
   .panel .rule.b{background:var(--navy2)}.panel .rule.g{background:var(--teal)}
 
-  /* hero screenshot */
   .screen{position:relative;background:var(--panel2);border:1px solid var(--line);border-radius:12px;
     box-shadow:inset 0 1px 0 #ffffff70,0 3px 8px #00000018;padding:14px;margin-top:30px}
   .screen img{width:100%;display:block;border-radius:6px;border:1px solid var(--line2)}
   .screen .cap{text-align:center;font-size:.66rem;letter-spacing:1px;color:var(--dim);margin-top:10px;text-transform:uppercase}
 
-  /* features: sequencer-style cells */
   .feat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
   @media(max-width:640px){.feat{grid-template-columns:1fr}}
   .cell{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;position:relative;padding-left:44px}
@@ -81,7 +85,6 @@
   .cell p{font-size:.82rem;color:#4a4842;line-height:1.5}
   .d-red{background:var(--red)}.d-navy{background:var(--navy2)}.d-amber{background:var(--amber)}.d-teal{background:var(--teal)}
 
-  /* specs */
   .spec{list-style:none}
   .spec li{display:flex;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.86rem}
   .spec .k{width:130px;color:var(--dim);text-transform:uppercase;font-size:.7rem;letter-spacing:1px}
@@ -90,7 +93,6 @@
   .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   @media(max-width:720px){.two{grid-template-columns:1fr}}
   .lead{font-size:.9rem;max-width:640px;margin-bottom:12px}
-  .jp{color:var(--dim);font-size:.85rem}
 
   footer{padding:38px 0 64px;text-align:center}
   footer .cells{display:flex;gap:5px;justify-content:center;margin-bottom:18px}
@@ -100,32 +102,40 @@
   footer .fine{margin-top:14px;font-size:.66rem;color:var(--dim);letter-spacing:1px}
 </style>
 </head>
-<body>
+<body class="lang-en">
 
 <div class="topbar"><div class="wrap">
   <span class="brand">PACIFIC SYNTHESIS</span>
-  <nav>
-    <a href="#features">Features</a>
-    <a href="#specs">Specs</a>
-    <a href="#download">Download</a>
-  </nav>
+  <div class="right">
+    <nav>
+      <a href="#features"><span class="en">Features</span><span class="jp">機能</span></a>
+      <a href="#specs"><span class="en">Specs</span><span class="jp">仕様</span></a>
+      <a href="#download"><span class="en">Download</span><span class="jp">DL</span></a>
+    </nav>
+    <div class="langtog">
+      <button data-l="en">EN</button>
+      <button data-l="jp">日本語</button>
+    </div>
+  </div>
 </div></div>
 
 <div class="wrap">
 
   <section class="hero">
-    <span class="kick">Free VST3 / AU Instrument · Coast Machine</span>
+    <span class="kick"><span class="en">Free VST3 / AU Instrument · Coast Machine</span><span class="jp">無料 VST3 / AU 音源 · Coast Machine</span></span>
     <h1>Pacific Synthesis</h1>
-    <p class="tag">A lo-fi drum &amp; bass synthesizer with a built-in 16-step sequencer.
-      <span class="jp">303 風ベース + 808/909 系ドラム。16ステップ・シーケンサ内蔵の Lo-fi シンセ。</span></p>
+    <p class="tag">
+      <span class="en">A lo-fi drum &amp; bass synthesizer with a built-in 16-step sequencer.</span>
+      <span class="jp">16ステップ・シーケンサ内蔵の Lo-fi ドラム&amp;ベースシンセ。303 風ベース + 808/909 系ドラム。</span>
+    </p>
     <div class="meta">
       <span class="chip">VST3 / AU / Standalone</span>
       <span class="chip">macOS · Windows</span>
-      <span class="chip g">Free · AGPLv3</span>
+      <span class="chip g"><span class="en">Free · AGPLv3</span><span class="jp">無料 · AGPLv3</span></span>
     </div>
     <div class="dl">
-      <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases" target="_blank" rel="noopener">Download</a>
-      <a class="btn alt" href="https://github.com/theclash006-design/PacificSynthesis" target="_blank" rel="noopener">Source on GitHub</a>
+      <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases" target="_blank" rel="noopener"><span class="en">Download</span><span class="jp">ダウンロード</span></a>
+      <a class="btn alt" href="https://github.com/theclash006-design/PacificSynthesis" target="_blank" rel="noopener"><span class="en">Source on GitHub</span><span class="jp">GitHub でソース</span></a>
     </div>
 
     <div class="screen">
@@ -136,37 +146,45 @@
 
   <section id="features" class="panel">
     <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
-    <h2>Features</h2><div class="rule"></div>
+    <h2><span class="en">Features</span><span class="jp">機能</span></h2><div class="rule"></div>
     <div class="feat">
-      <div class="cell"><span class="dot d-navy"></span><h3>16-step Sequencer</h3><p>内蔵シーケンサ。ホスト同期 + スタンドアロン再生に対応。</p></div>
-      <div class="cell"><span class="dot d-red"></span><h3>303-style Bass</h3><p>ladder filter + accent + slide + sub-osc + drive + LFO。</p></div>
-      <div class="cell"><span class="dot d-amber"></span><h3>Analog Drums</h3><p>Kick / Snare / HiHat (Closed + Open) / Clap。</p></div>
-      <div class="cell"><span class="dot d-teal"></span><h3>FX Chain</h3><p>Delay (テンポ同期) + Reverb + Distortion (2x oversampled)。</p></div>
-      <div class="cell"><span class="dot d-navy"></span><h3>Compressor &amp; Sidechain</h3><p>VCA 風 Master Bus Compressor + Kick→Bass ダッキング。</p></div>
-      <div class="cell"><span class="dot d-red"></span><h3>MIDI Export</h3><p>ファイル保存 or DAW トラックへドラッグ&ドロップ。</p></div>
+      <div class="cell"><span class="dot d-navy"></span><h3>16-step Sequencer</h3>
+        <p><span class="en">Built-in sequencer. Host-sync + standalone playback.</span><span class="jp">内蔵シーケンサ。ホスト同期 + スタンドアロン再生に対応。</span></p></div>
+      <div class="cell"><span class="dot d-red"></span><h3>303-style Bass</h3>
+        <p><span class="en">Ladder filter + accent + slide + sub-osc + drive + LFO.</span><span class="jp">ladder filter + accent + slide + sub-osc + drive + LFO。</span></p></div>
+      <div class="cell"><span class="dot d-amber"></span><h3>Analog Drums</h3>
+        <p><span class="en">Kick / Snare / HiHat (Closed + Open) / Clap.</span><span class="jp">Kick / Snare / HiHat (Closed + Open) / Clap。</span></p></div>
+      <div class="cell"><span class="dot d-teal"></span><h3>FX Chain</h3>
+        <p><span class="en">Delay (tempo-sync) + Reverb + Distortion (2x oversampled).</span><span class="jp">Delay (テンポ同期) + Reverb + Distortion (2x oversampled)。</span></p></div>
+      <div class="cell"><span class="dot d-navy"></span><h3>Compressor &amp; Sidechain</h3>
+        <p><span class="en">VCA-style master bus compressor + Kick→Bass ducking.</span><span class="jp">VCA 風 Master Bus Compressor + Kick→Bass ダッキング。</span></p></div>
+      <div class="cell"><span class="dot d-red"></span><h3>MIDI Export</h3>
+        <p><span class="en">Save to file, or drag &amp; drop to a DAW track.</span><span class="jp">ファイル保存 or DAW トラックへドラッグ&amp;ドロップ。</span></p></div>
     </div>
   </section>
 
   <div class="two">
     <section id="specs" class="panel">
       <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
-      <h2>Specs</h2><div class="rule b"></div>
+      <h2><span class="en">Specs</span><span class="jp">仕様</span></h2><div class="rule b"></div>
       <ul class="spec">
         <li><span class="k">Formats</span><span class="v">VST3 · AU · Standalone</span></li>
         <li><span class="k">macOS</span><span class="v">10.15+ · Intel &amp; Apple Silicon</span></li>
         <li><span class="k">Windows</span><span class="v">10+ (x64)</span></li>
         <li><span class="k">Built on</span><span class="v">JUCE 8 · C++17</span></li>
-        <li><span class="k">License</span><span class="v"><b>AGPLv3</b> (open source)</span></li>
+        <li><span class="k">License</span><span class="v"><b>AGPLv3</b> <span class="en">(open source)</span><span class="jp">(オープンソース)</span></span></li>
         <li><span class="k">Status</span><span class="v">v1.0.0 · PluginVal 10 ✓</span></li>
       </ul>
     </section>
 
     <section id="download" class="panel">
       <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
-      <h2>Download</h2><div class="rule g"></div>
-      <p class="lead">Free and open source. Grab the latest build, or compile from source.</p>
-      <p class="jp" style="margin-bottom:16px">無料・オープンソース。GitHub からバイナリ取得、またはソースからビルド可能。</p>
-      <div class="dl" style="display:flex;gap:12px;flex-wrap:wrap">
+      <h2><span class="en">Download</span><span class="jp">ダウンロード</span></h2><div class="rule g"></div>
+      <p class="lead">
+        <span class="en">Free and open source. Grab the latest build, or compile from source.</span>
+        <span class="jp">無料・オープンソース。GitHub からバイナリ取得、またはソースからビルド可能。</span>
+      </p>
+      <div class="dl" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
         <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases" target="_blank" rel="noopener">Releases</a>
         <a class="btn alt" href="https://github.com/theclash006-design/PacificSynthesis" target="_blank" rel="noopener">GitHub</a>
       </div>
@@ -176,10 +194,14 @@
   <section id="maker" class="panel">
     <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
     <h2>Coast Machine</h2><div class="rule"></div>
-    <p class="lead">Pacific Synthesis is made by <b>Coast Machine</b> — a dub techno &amp; open-source audio project
-      from the west coast of Japan. Heavy, dark, hypnotic; and the tools built to make that sound.</p>
-    <p class="jp">日本海側から Dub Techno とオープンソースの音楽ツールを作るソロプロジェクト。
-      音源は <a href="https://theecoastmachine.bandcamp.com/">Bandcamp</a> にて。</p>
+    <p class="lead">
+      <span class="en">Pacific Synthesis is made by <b>Coast Machine</b> — an acid techno &amp; open-source audio project
+        from the west coast of Japan. 303 bass lines, heavy, dark, hypnotic; and the tools built to make that sound.
+        Music at <a href="https://theecoastmachine.bandcamp.com/">Bandcamp</a>.</span>
+      <span class="jp"><b>Coast Machine</b> は日本海側から Acid Techno とオープンソースの音楽ツールを作るソロプロジェクト。
+        303 ベースを軸に、重く、暗く、催眠的に。そしてその音を作るための道具も自作。
+        音源は <a href="https://theecoastmachine.bandcamp.com/">Bandcamp</a> にて。</span>
+    </p>
   </section>
 
 </div>
@@ -196,6 +218,28 @@
   </div>
   <p class="fine">© 2026 COAST MACHINE · PACIFIC SYNTHESIS · AGPLv3 · Made with ☕ on the West Coast (of Japan)</p>
 </div></footer>
+
+<script>
+(function(){
+  function setLang(l){
+    document.body.classList.remove('lang-en','lang-jp');
+    document.body.classList.add('lang-'+l);
+    document.documentElement.lang = (l==='jp'?'ja':'en');
+    var btns = document.querySelectorAll('.langtog button');
+    for(var i=0;i<btns.length;i++){ btns[i].classList.toggle('active', btns[i].getAttribute('data-l')===l); }
+    try{ localStorage.setItem('cm-lang', l); }catch(e){}
+  }
+  var saved='en';
+  try{ saved = localStorage.getItem('cm-lang') || 'en'; }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('.langtog button');
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener('click', function(){ setLang(this.getAttribute('data-l')); });
+    }
+    setLang(saved);
+  });
+})();
+</script>
 
 </body>
 </html>
