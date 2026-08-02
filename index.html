@@ -90,6 +90,9 @@
   .spec .k{width:130px;color:var(--dim);text-transform:uppercase;font-size:.7rem;letter-spacing:1px}
   .spec .v b{color:var(--teal)}
 
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:3px;
+    padding:1px 4px;font-size:.92em;color:var(--red)}
+
   .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   @media(max-width:720px){.two{grid-template-columns:1fr}}
   .lead{font-size:.9rem;max-width:640px;margin-bottom:12px}
@@ -110,6 +113,7 @@
     <nav>
       <a href="#features"><span class="en">Features</span><span class="jp">機能</span></a>
       <a href="#specs"><span class="en">Specs</span><span class="jp">仕様</span></a>
+      <a href="#docs"><span class="en">Docs</span><span class="jp">マニュアル</span></a>
       <a href="#download"><span class="en">Download</span><span class="jp">ダウンロード</span></a>
     </nav>
     <div class="langtog">
@@ -134,9 +138,16 @@
       <span class="chip g"><span class="en">Free · AGPLv3</span><span class="jp">無料 · AGPLv3</span></span>
     </div>
     <div class="dl">
-      <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases" target="_blank" rel="noopener"><span class="en">Download</span><span class="jp">ダウンロード</span></a>
+      <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases/latest/download/PacificSynthesis-macOS.zip">
+        <span class="en">Download for macOS</span><span class="jp">macOS 版をダウンロード</span></a>
+      <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases/latest/download/PacificSynthesis-Windows.zip">
+        <span class="en">Download for Windows</span><span class="jp">Windows 版をダウンロード</span></a>
       <a class="btn alt" href="https://github.com/theclash006-design/PacificSynthesis" target="_blank" rel="noopener"><span class="en">Source on GitHub</span><span class="jp">GitHub でソース</span></a>
     </div>
+    <p style="margin-top:10px;font-size:.72rem;color:var(--dim)">
+      <span class="en">VST3 · AU (macOS) · Standalone — free &amp; open source. Unsigned build: see install notes below.</span>
+      <span class="jp">VST3 · AU (macOS) · スタンドアロン — 無料・オープンソース。未署名ビルドのため下記の注意をご確認ください。</span>
+    </p>
 
     <div class="screen">
       <img src="img/plugin.png" alt="Pacific Synthesis plugin interface">
@@ -181,15 +192,69 @@
       <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
       <h2><span class="en">Download</span><span class="jp">ダウンロード</span></h2><div class="rule g"></div>
       <p class="lead">
-        <span class="en">Free and open source. Grab the latest build, or compile from source.</span>
-        <span class="jp">無料・オープンソース。GitHub からバイナリ取得、またはソースからビルド可能。</span>
+        <span class="en">Free and open source. Download below, or build from source.</span>
+        <span class="jp">無料・オープンソース。下のボタンから入手、またはソースからビルドできます。</span>
       </p>
       <div class="dl" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
-        <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases" target="_blank" rel="noopener">Releases</a>
-        <a class="btn alt" href="https://github.com/theclash006-design/PacificSynthesis" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases/latest/download/PacificSynthesis-macOS.zip">macOS</a>
+        <a class="btn" href="https://github.com/theclash006-design/PacificSynthesis/releases/latest/download/PacificSynthesis-Windows.zip">Windows</a>
+        <a class="btn alt" href="https://github.com/theclash006-design/PacificSynthesis/releases" target="_blank" rel="noopener">
+          <span class="en">All releases</span><span class="jp">リリース一覧</span></a>
+      </div>
+
+      <div style="margin-top:20px;padding-top:14px;border-top:1px dashed var(--line)">
+        <p style="font-size:.78rem;font-weight:bold;color:var(--navy);margin-bottom:6px">
+          <span class="en">Installing</span><span class="jp">インストール方法</span></p>
+        <ul class="spec" style="font-size:.76rem">
+          <li><span class="k">macOS</span><span class="v">
+            <span class="en">VST3 → <code>~/Library/Audio/Plug-Ins/VST3/</code> · AU → <code>.../Components/</code></span>
+            <span class="jp">VST3 → <code>~/Library/Audio/Plug-Ins/VST3/</code> · AU → <code>.../Components/</code></span></span></li>
+          <li><span class="k">Windows</span><span class="v">
+            <span class="en">VST3 → <code>C:\Program Files\Common Files\VST3\</code> (admin)</span>
+            <span class="jp">VST3 → <code>C:\Program Files\Common Files\VST3\</code> (管理者権限)</span></span></li>
+        </ul>
+
+        <p style="font-size:.78rem;font-weight:bold;color:var(--red);margin:14px 0 6px">
+          <span class="en">Unsigned build — first launch</span><span class="jp">未署名ビルドについて (初回起動時)</span></p>
+        <p style="font-size:.74rem;color:#4a4842;line-height:1.6">
+          <span class="en">These builds are not code-signed, so your OS will warn you the first time.<br>
+            <b>macOS</b>: after unzipping, open Terminal, <code>cd</code> into the folder and run
+            <code>xattr -cr "Pacific Synthesis.vst3"</code> (also for <code>.component</code> / <code>.app</code>).
+            The old right-click → Open trick no longer works on macOS 15 Sequoia.<br>
+            <b>Windows</b>: if SmartScreen appears, choose <b>More info</b> → <b>Run anyway</b>.</span>
+          <span class="jp">コード署名をしていないため、初回起動時に OS が警告を表示します。<br>
+            <b>macOS</b>: 解凍後、ターミナルでフォルダに <code>cd</code> して
+            <code>xattr -cr "Pacific Synthesis.vst3"</code> を実行 (<code>.component</code> / <code>.app</code> も同様)。
+            従来の「右クリック →『開く』」は macOS 15 Sequoia 以降では使えません。<br>
+            <b>Windows</b>: SmartScreen の警告が出たら「<b>詳細情報</b>」→「<b>実行</b>」を選択。</span>
+        </p>
       </div>
     </section>
   </div>
+
+  <section id="docs" class="panel">
+    <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
+    <h2><span class="en">Documentation</span><span class="jp">マニュアル</span></h2><div class="rule b"></div>
+    <p class="lead">
+      <span class="en">Full user guide and per-instrument parameter references. Also bundled in the download.</span>
+      <span class="jp">ユーザーガイドと各音源のパラメータ解説。ダウンロード版にも同梱しています。</span>
+    </p>
+
+    <div class="dl" style="display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 18px">
+      <a class="btn" href="docs/Pacific_Synthesis_UserGuide_EN.pdf" target="_blank" rel="noopener">User Guide (EN)</a>
+      <a class="btn" href="docs/Pacific_Synthesis_UserGuide_JP.pdf" target="_blank" rel="noopener">ユーザーガイド (JP)</a>
+    </div>
+
+    <p style="font-size:.78rem;font-weight:bold;color:var(--navy);margin-bottom:8px">
+      <span class="en">Parameter guides</span><span class="jp">パラメータ解説</span></p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Kick_Guide.pdf"  target="_blank" rel="noopener">Kick</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Snare_Guide.pdf" target="_blank" rel="noopener">Snare</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_HiHat_Guide.pdf" target="_blank" rel="noopener">HiHat</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Clap_Guide.pdf"  target="_blank" rel="noopener">Clap</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Bass_Guide.pdf"  target="_blank" rel="noopener">Bass (303)</a>
+    </div>
+  </section>
 
   <section id="maker" class="panel">
     <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
