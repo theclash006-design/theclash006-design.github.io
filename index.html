@@ -28,6 +28,10 @@
   body.lang-en .jp{display:none}
   body.lang-jp .en{display:none}
 
+  /* チップの並び。display をインラインで書くと上の display:none に勝って
+     しまい言語切替が効かなくなるので、必ずクラス側で指定する。 */
+  .chiprow{display:flex;gap:8px;flex-wrap:wrap}
+
   .screw{width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#d8d1bb,#9a927a);
     border:1px solid #7d7660;position:absolute}
   .screw::after{content:"";position:absolute;inset:3px;border-top:1px solid #6f6850;transform:rotate(30deg)}
@@ -247,12 +251,21 @@
 
     <p style="font-size:.78rem;font-weight:bold;color:var(--navy);margin-bottom:8px">
       <span class="en">Parameter guides</span><span class="jp">パラメータ解説</span></p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Kick_Guide.pdf"  target="_blank" rel="noopener">Kick</a>
-      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Snare_Guide.pdf" target="_blank" rel="noopener">Snare</a>
-      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_HiHat_Guide.pdf" target="_blank" rel="noopener">HiHat</a>
-      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Clap_Guide.pdf"  target="_blank" rel="noopener">Clap</a>
-      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Bass_Guide.pdf"  target="_blank" rel="noopener">Bass (303)</a>
+
+    <!-- 言語トグルに合わせて EN / JP の一方だけを見せる -->
+    <div class="en chiprow">
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Kick_Guide_EN.pdf"  target="_blank" rel="noopener">Kick</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Snare_Guide_EN.pdf" target="_blank" rel="noopener">Snare</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_HiHat_Guide_EN.pdf" target="_blank" rel="noopener">HiHat</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Clap_Guide_EN.pdf"  target="_blank" rel="noopener">Clap</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Bass_Guide_EN.pdf"  target="_blank" rel="noopener">Bass (303)</a>
+    </div>
+    <div class="jp chiprow">
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Kick_Guide_JP.pdf"  target="_blank" rel="noopener">Kick</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Snare_Guide_JP.pdf" target="_blank" rel="noopener">Snare</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_HiHat_Guide_JP.pdf" target="_blank" rel="noopener">HiHat</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Clap_Guide_JP.pdf"  target="_blank" rel="noopener">Clap</a>
+      <a class="chip" style="text-decoration:none" href="docs/Pacific_Synthesis_Bass_Guide_JP.pdf"  target="_blank" rel="noopener">Bass (303)</a>
     </div>
   </section>
 
